@@ -87,4 +87,4 @@ while True:
 	command = tb.readLastMessage()['message']
 	print('El comando es: ' + command)
 	checkCommands(command)
-	time.sleep(2)
+	time.sleep(1)
