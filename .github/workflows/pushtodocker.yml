@@ -6,6 +6,8 @@ on:
     
 jobs:
   main:
+    env:
+      repoName: emaxx21/TelegramBot
     runs-on: ubuntu-latest
     steps:
       -
@@ -26,7 +28,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ github.repository }}:latest
+          tags: ${{ env.repoName }}:latest
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
