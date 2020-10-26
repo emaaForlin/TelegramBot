@@ -7,7 +7,7 @@ on:
 jobs:
   main:
     env:
-      repoName: emaxx21/TelegramBot
+      repoName: emaxx21/telegrambot
     runs-on: ubuntu-latest
     steps:
       -
