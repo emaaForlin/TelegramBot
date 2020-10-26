@@ -1,5 +1,4 @@
-#name: ci
-
+name: CI to Dockerhub
 on:
   push:
     branches: main
@@ -30,7 +29,7 @@ jobs:
           #context: .
           file: ./Dockerfile
           push: true
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
           tags: ${{ env.repoName }}:latest
       -
         name: Image digest
