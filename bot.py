@@ -60,7 +60,7 @@ def checkCommands(command):
 			try:
 				raw = command.strip('/numerorandom ')
 			except:
-				tb.sendMessage(MY_CHAT_ID, 'Debes ingresar 2 numero')
+				tb.sendMessage(MY_CHAT_ID, 'Debes ingresar 2 numeros')
 			min_max = list(map(int, raw.split(',')))
 			
 			num = randint(min_max[0],min_max[1])
