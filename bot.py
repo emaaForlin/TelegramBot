@@ -69,9 +69,6 @@ def checkCommands(command):
 			prevCommand = command
 			command = None
 
-				
-				
-
 		else:
 			tb.sendMessage(MY_CHAT_ID, 'uh ni idea maestro')
 			print(command)
