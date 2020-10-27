@@ -41,6 +41,13 @@ jobs:
           platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
           tags: |
             ${{ env.repoName }}:latest
+            ${{ env.repoName }}:${{ steps.version.outputs.next-version }} 
+      -
+        name: Tag version
+        uses: hole19/git-tag-action@master
+        env:
+          TAG: v${{ steps.version.outputs.next-version }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
