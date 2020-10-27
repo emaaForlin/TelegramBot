@@ -47,5 +47,4 @@ jobs:
         
       - 
         name: New Version
-        run: echo Next:${{ steps.version.outputs.next-version }}
-        run: echo Current:${{ steps.version.outputs.current-version }} 
+        run: echo Next:${{ steps.version.outputs.next-version }} && echo Current:${{ steps.version.outputs.current-version }} 
