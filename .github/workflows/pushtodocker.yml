@@ -7,25 +7,22 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    steps: 
-      - id: release
+      repoName: emaxx21/telegrambot
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      - 
+        id: release
         uses: rymndhng/release-on-push-action@master
         with:
           bump_version_scheme: minor
 
-      - name: Check Output Parameters
+      - 
+        name: Check Output Parameters
         run: |
-          echo "Got tag name ${{ steps.release.outputs.tag_name }}"
-          echo "Got release version ${{ steps.release.outputs.version }}"
-
-  push_to_dockerhub:
-    env:
-      repoName: emaxx21/telegrambot
-    runs-on: ubuntu-latest
-    steps:
-      -
-        name: Checkout  
-        uses: actions/checkout@v2 
+          echo "New tag name ${{ steps.release.outputs.tag_name }}"
+          echo "New release version ${{ steps.release.outputs.version }}"
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -49,6 +46,7 @@ jobs:
           platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
           tags: |
             ${{ env.repoName }}:latest
+            ${{ env.repoName }}:${{ steps.release.outputs.tag_name }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
