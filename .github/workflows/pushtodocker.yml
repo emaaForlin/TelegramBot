@@ -11,7 +11,12 @@ jobs:
       - id: release
         uses: rymndhng/release-on-push-action@master
         with:
-          bump_version_scheme: major
+          bump_version_scheme: minor
+
+      - name: Check Output Parameters
+        run: |
+          echo "Got tag name ${{ steps.release.outputs.tag_name }}"
+          echo "Got release version ${{ steps.release.outputs.version }}"
 
   push_to_dockerhub:
     env:
