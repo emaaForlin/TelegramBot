@@ -5,10 +5,24 @@ on:
     tags:
       - '*'
 jobs:
-  ci:
+  release-on-push:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - id: release
+        uses: rymndhng/release-on-push-action@master
+        with:
+          bump_version_scheme: minor
+
+      - name: Check Output Parameters
+        run: |
+          echo "Got tag name ${{ steps.release.outputs.tag_name }}"
+          echo "Got release version ${{ steps.release.outputs.version }}"
+
+  push_to_dockerhub:
     env:
       repoName: emaxx21/telegrambot
-
     runs-on: ubuntu-latest
     steps:
       -
@@ -40,7 +54,3 @@ jobs:
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
-      -
-        name: Previous Tag
-        run: echo ${{ steps.previoustag.outputs.tag }}
-   
