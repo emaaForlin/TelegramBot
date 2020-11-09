@@ -12,7 +12,7 @@ jobs:
         uses: rymndhng/release-on-push-action@master
         with:
           bump_version_scheme: minor
-  
+
   push_to_dockerhub:
     env:
       repoName: emaxx21/telegrambot
