@@ -2,8 +2,6 @@ name: CI to Dockerhub
 on:
   push:
     branches: main
-    tags:
-      - '*'
 jobs:
   release-on-push:
     runs-on: ubuntu-latest
@@ -13,19 +11,12 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v2
-
       - 
         id: release
         uses: rymndhng/release-on-push-action@master
         with:
           bump_version_scheme: minor
-
-      - 
-        name: Check Output Parameters
-        run: |
-          echo "Got tag name ${{ steps.release.outputs.tag_name }}"
-          echo "Got release version ${{ steps.release.outputs.version }}"
-
+  
   push_to_dockerhub:
     env:
       repoName: emaxx21/telegrambot
