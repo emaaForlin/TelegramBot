@@ -2,6 +2,8 @@ name: CI to Dockerhub
 on:
   push:
     branches: main
+    tags:
+      - '*'
 jobs:
   ci:
     env:
