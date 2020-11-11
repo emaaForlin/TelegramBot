@@ -6,17 +6,28 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('TOKEN', help='Telegram bot token')
 parser.add_argument('CHAT_ID', help='Your ChatID')
+parser.add_argument('--test', help='Default False')
 args = parser.parse_args()
 
-#TOKEN = '1288737573:AAHcOinC_yFxk3q48sCO5EhFhu0W9e-f1Ho'
 TOKEN = args.TOKEN
-#MY_CHAT_ID = '1003891039'
 MY_CHAT_ID = args.CHAT_ID
+
 
 tb = telegramapi.TelegramAPI(TOKEN)
 tb.sendMessage(MY_CHAT_ID, 'Starting bot.')
 
 prevCommand = ''
+
+def testMode():
+	tb.sendMessage(MY_CHAT_ID, 'Starting the testing mode.')
+	tb.sendMessage(MY_CHAT_ID, 'this mode will test all functions and then shutdown')
+	tb.Update()
+	tb.sendMessage(MY_CHAT_ID, str(randint(0,65536)))
+	tb.getMe()
+	tb.getCommands()
+	tb.sendDice(MY_CHAT_ID)
+	tb.sendMessage(MY_CHAT_ID, 'Shuting down...')
+	exit()
 
 def checkCommands(command):
 	global prevCommand
@@ -84,6 +95,8 @@ def checkCommands(command):
 
 
 while True:
+	if args.test:
+		testMode()
 	command = tb.readLastMessage()['message']
 	print('El comando es: ' + command)
 	checkCommands(command)

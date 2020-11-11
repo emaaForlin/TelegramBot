@@ -10,4 +10,6 @@ jobs:
   with:
     python-version: '3.8'
     architecture: 'x64' 
-  - run: python bot.py ${{ secrets.TOKEN }} ${{ secrets.CHAT_ID }}
+  - run: |
+        python pip install --upgrade TelegramBotInterface
+        python bot.py ${{ secrets.TOKEN }} ${{ secrets.CHAT_ID }} --test
