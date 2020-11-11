@@ -1,4 +1,4 @@
-from telegramapi import TelegramAPI 
+from TelegramBotInterface import telegramapi
 import time
 from random import randint
 import argparse
@@ -13,7 +13,7 @@ TOKEN = args.TOKEN
 #MY_CHAT_ID = '1003891039'
 MY_CHAT_ID = args.CHAT_ID
 
-tb = TelegramAPI(TOKEN)
+tb = telegramapi.TelegramAPI(TOKEN)
 tb.sendMessage(MY_CHAT_ID, 'Starting bot.')
 
 prevCommand = ''
