@@ -10,6 +10,5 @@ jobs:
     - uses: BSFishy/pip-action@v1
       with:
         packages: |
-          requests
           TelegramBotInterface
    - run: python bot.py ${{ secrets.TOKEN }} ${{ secrets.CHAT_ID }} --test
