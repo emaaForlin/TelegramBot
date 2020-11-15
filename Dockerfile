@@ -9,4 +9,4 @@ WORKDIR /app
 ENV TOKEN ''
 ENV CHAT_ID ''
 
-ENTYPOINT python3 bot.py $TOKEN $CHAT_ID
+ENTRYPOINT python3 bot.py $TOKEN $CHAT_ID
