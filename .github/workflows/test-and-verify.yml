@@ -11,7 +11,7 @@ jobs:
       with:
         packages: |
           TelegramBotInterface
-
+    - run: python bot.py ${{ secrets.TOKEN }} ${{ secrets.CHAT_ID }} --test 
     - uses: actions/setup-python@v2
       with:
         python-version: '3.7'
