@@ -8,5 +8,6 @@ WORKDIR /app
 
 ENV TOKEN ''
 ENV CHAT_ID ''
+ENV RUN_TEST 'false'
 
-ENTRYPOINT python3 bot.py $TOKEN $CHAT_ID
+ENTRYPOINT python3 bot.py $TOKEN $CHAT_ID $RUN_TEST
