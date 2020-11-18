@@ -32,7 +32,7 @@ jobs:
       -
         name: Test app
         uses: actions/setup-python@v1
-        run: python bot.py ${{ secrets.TELEGRAM_TOKEN }} ${{ secrets.TELEGRAM_CHAT_ID }} true
+        - run: python bot.py ${{ secrets.TELEGRAM_TOKEN }} ${{ secrets.TELEGRAM_CHAT_ID }} true
       -
         name: Build and push
         id: docker_build
