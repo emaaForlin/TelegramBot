@@ -26,8 +26,8 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       -
         name: Install dependencies
-      - uses: py-actions/py-dependency-install@v2
-      - uses: actions/setup-python@v1
+        uses: py-actions/py-dependency-install@v2
+        uses: actions/setup-python@v1
         with:
           path: "requeriments.txt"
           python_version: '3.8'
