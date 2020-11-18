@@ -29,7 +29,12 @@ jobs:
         uses: py-actions/py-dependency-install@v2
         with:
           path: "requirements.txt"
-        
+      -
+        name: Run Test
+        uses: actions/setup-python@v2
+        with:
+          python_version: '3.8'
+      - run: python bot.py ${{ secrets.TELEGRAM_TOKEN }} ${{ secrets.TELEGRAM_CHAT_ID }} true  
       
       -
         name: Build and push
