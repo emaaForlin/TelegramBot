@@ -29,8 +29,7 @@ jobs:
         uses: actions/setup-python@v1
         uses: BSFishy/pip-action@v1
         with:
-          packages: |
-            requests
+          packages: requests
         - run: python bot.py ${{ secrets.TELEGRAM_TOKEN }} ${{ secrets.TELEGRAM_CHAT_ID }} true
       
       -
