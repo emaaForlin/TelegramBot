@@ -31,7 +31,7 @@ jobs:
           path: "requeriments.txt"
       -
         name: Test app
-        uses: uses: actions/setup-python@v1
+        uses: actions/setup-python@v1
         run: python bot.py ${{ secrets.TELEGRAM_TOKEN }} ${{ secrets.TELEGRAM_CHAT_ID }} true
       -
         name: Build and push
