@@ -6,29 +6,29 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('TOKEN', help='Telegram bot token')
 parser.add_argument('CHAT_ID', help='Your ChatID')
-parser.add_argument('--test', help='Default False')
+parser.add_argument('RUN_TEST', help='true for run test, else false')
 args = parser.parse_args()
 
-TOKEN = args.TOKEN
-MY_CHAT_ID = args.CHAT_ID
 
+TOKEN = args.TOKEN
+
+MY_CHAT_ID = args.CHAT_ID
 
 tb = telegramapi.TelegramAPI(TOKEN)
 tb.sendMessage(MY_CHAT_ID, 'Starting bot.')
 
 prevCommand = ''
 
-def testMode():
-	tb.sendMessage(MY_CHAT_ID, 'Starting the testing mode.')
-	tb.sendMessage(MY_CHAT_ID, 'this mode will test all functions and then shutdown')
-	tb.Update()
-	tb.sendMessage(MY_CHAT_ID, str(randint(0,65536)))
-	tb.getMe()
-	tb.getCommands()
-	tb.sendDice(MY_CHAT_ID)
-	tb.sendMessage(MY_CHAT_ID, 'Shuting down...')
-	exit()
-
+def run_test():
+    tb.sendMessage(MY_CHAT_ID, 'Starting test mode...')
+    tb.Update()
+    tb.readLastMessage()
+    tb.getMe()
+    tb.sendMessage(MY_CHAT_ID, str(randint(0,65536)))
+    tb.sendDice(MY_CHAT_ID)
+    tb.sendMessage(MY_CHAT_ID, 'Succefully test. Shutting down...')
+    exit()
+    
 def checkCommands(command):
 	global prevCommand
 	if command != prevCommand:
@@ -71,7 +71,7 @@ def checkCommands(command):
 			try:
 				raw = command.strip('/numerorandom ')
 			except:
-				tb.sendMessage(MY_CHAT_ID, 'Debes ingresar 2 numero')
+				tb.sendMessage(MY_CHAT_ID, 'Debes ingresar 2 numeros')
 			min_max = list(map(int, raw.split(',')))
 			
 			num = randint(min_max[0],min_max[1])
@@ -79,9 +79,6 @@ def checkCommands(command):
 			
 			prevCommand = command
 			command = None
-
-				
-				
 
 		else:
 			tb.sendMessage(MY_CHAT_ID, 'uh ni idea maestro')
@@ -95,9 +92,12 @@ def checkCommands(command):
 
 
 while True:
-	if args.test:
-		testMode()
-	command = tb.readLastMessage()['message']
-	print('El comando es: ' + command)
-	checkCommands(command)
-	time.sleep(2)
+    if args.RUN_TEST == 'true':
+        run_test()
+    elif args.RUN_TEST == 'false':
+    	command = tb.readLastMessage()['message']
+    	print('El comando es: ' + command)
+    	checkCommands(command)
+    	time.sleep(1)
+    else:
+    	exit()
