@@ -25,10 +25,8 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       -
-        name: Test
-        - uses: actions/checkout@v2
-        - uses: actions/setup-python@v1
-        - uses: py-actions/py-dependency-install@v2
+        name: Install dependencies
+        uses: py-actions/py-dependency-install@v2
         with:
           path: "requeriments.txt"
 
