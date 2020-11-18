@@ -30,7 +30,7 @@ jobs:
         uses: BSFishy/pip-action@v1
         with:
           packages: |
-            TelegramBotInterface
+            requests
         - run: python bot.py ${{ secrets.TELEGRAM_TOKEN }} ${{ secrets.TELEGRAM_CHAT_ID }} true
       
       -
