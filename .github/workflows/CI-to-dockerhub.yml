@@ -31,8 +31,7 @@ jobs:
         uses: py-actions/py-dependency-install@v2
         with:
           path: "requeriments.txt"
-        - run: python bot.py ${{ secrets.TELEGRAM_TOKEN }} ${{ secrets.TELEGRAM_CHAT_ID }} true
-      
+
       -
         name: Build and push
         id: docker_build
