@@ -29,7 +29,10 @@ jobs:
         uses: py-actions/py-dependency-install@v2
         with:
           path: "requeriments.txt"
-
+      -
+        name: Test app
+        uses: uses: actions/setup-python@v1
+        run: python bot.py ${{ secrets.TELEGRAM_TOKEN }} ${{ secrets.TELEGRAM_CHAT_ID }} true
       -
         name: Build and push
         id: docker_build
@@ -39,8 +42,6 @@ jobs:
           file: ./Dockerfile
           push: true
           platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
-          tag_with_ref: true
-          tag_with_sha: true
           tags: |
             ${{ env.repoName }}:latest
             ${{ env.repoName }}:${{ github.sha }}
