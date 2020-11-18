@@ -1,7 +1,7 @@
 from TelegramBotInterface import telegramapi
 import time
 from random import randint
-import argparse
+#import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('TOKEN', help='Telegram bot token')
