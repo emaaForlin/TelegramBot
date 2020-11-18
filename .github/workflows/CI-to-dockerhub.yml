@@ -25,6 +25,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       -
+        name: Test image
         uses: actions/checkout@v2
         uses: actions/setup-python@v1
         uses: BSFishy/pip-action@v1
