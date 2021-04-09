@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      repoName: emaxx21/telegrambot
+      repoName: emaaforlin/telegrambot
     steps:
       -
         name: Checkout
